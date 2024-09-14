@@ -18,10 +18,7 @@
 ### Deskripsi Aplikasi
 Pengembangan sebuah aplikasi digital wallet sederhana yang bertujuan untuk memudahkan pengguna dalam melakukan transaksi sehari-hari seperti pembayaran, transfer uang dan pengelolaan keuangan lainnya.
 
-**Mobile programming:**
-  - Flutter
-  - Dart
-**Back-end programming:**
-  - 
-**Database:**
-  - 
+**Tools yang digunakan:**
+  - Mobile programming: flutter dan dart
+  - Back-end programming: 
+  - Database: 
