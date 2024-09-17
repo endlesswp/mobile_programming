@@ -148,7 +148,7 @@ class SecondOnboardingPage extends StatelessWidget {
       children: [
         Positioned.fill(
           child: Container(
-            color: Color(0xFFF3E9DC),
+            color: const Color(0xFFF3E9DC),
           ),
         ),
         Positioned(
@@ -183,7 +183,7 @@ class SecondOnboardingPage extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
-              color: Color(0xFF63402C),
+              color: const Color(0xFF63402C),
               borderRadius: BorderRadius.circular(12),
             ),
             child: Column(
@@ -192,7 +192,7 @@ class SecondOnboardingPage extends StatelessWidget {
                 Text(
                   'Welcome to',
                   style: GoogleFonts.poppins(
-                    color: Color(0xFFF3E9DC),
+                    color: const Color(0xFFF3E9DC),
                     fontSize: 15,
                   ),
                 ),
@@ -203,7 +203,7 @@ class SecondOnboardingPage extends StatelessWidget {
                   child: TypewriterAnimatedTextKit(
                   text: const ['Sarang Wallet'],
                   textStyle: GoogleFonts.dancingScript(
-                    color: Color(0xFFF3E9DC),
+                    color: const Color(0xFFF3E9DC),
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     ),
@@ -225,7 +225,7 @@ class SecondOnboardingPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF301F17),
+                    backgroundColor: const Color(0xFF301F17),
                     foregroundColor: Colors.white,
                     elevation: 4,
                     shape: RoundedRectangleBorder(
@@ -255,7 +255,7 @@ class SecondOnboardingPage extends StatelessWidget {
                     const SizedBox(height: 10),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFF301F17),
+                        backgroundColor: const Color(0xFF301F17),
                         foregroundColor: Colors.white,
                         elevation: 4,
                         shape: RoundedRectangleBorder(
