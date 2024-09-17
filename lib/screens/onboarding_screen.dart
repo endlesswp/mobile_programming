@@ -68,7 +68,7 @@ class FirstOnboardingPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
                           fontSize: 20,
-                          color: const Color(0xFFC5A787),
+                          color: Colors.black,
                           fontWeight: FontWeight.normal,
                         ),
                       ),
@@ -95,7 +95,7 @@ class FirstOnboardingPage extends StatelessWidget {
                         textAlign: TextAlign.center,
                         style: GoogleFonts.poppins(
                           fontSize: 20,
-                          color: const Color(0xFFC5A787),
+                          color: Colors.black,
                           fontWeight: FontWeight.normal,
                         ),
                       ),
@@ -137,6 +137,7 @@ class FirstOnboardingPage extends StatelessWidget {
 
 
 
+
 class SecondOnboardingPage extends StatelessWidget {
   final PageController pageController;
 
@@ -148,14 +149,24 @@ class SecondOnboardingPage extends StatelessWidget {
       children: [
         Positioned.fill(
           child: Container(
-            color: const Color(0xFFF3E9DC),
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF4E342E),
+                  Color(0xFF8D6E63),
+                  Color(0xFF4E342E),
+                ],
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+              ),
+            ),
           ),
         ),
         Positioned(
           top: 65,
           left: 15,
           child: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.brown, size: 30),
+            icon: const Icon(Icons.arrow_back, color: Colors.white, size: 30),
             onPressed: () {
               pageController.previousPage(
                 duration: const Duration(milliseconds: 300),
@@ -165,53 +176,79 @@ class SecondOnboardingPage extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: 130,
-          left: 20,
+          top: MediaQuery.of(context).size.height * 0.15,
+          left: 50,
           right: 20,
-          child: Center(
-            child: Image.asset(
-              'assets/sarang_wallet_icon.png',
-              height: 280,
-              width: 280,
-            ),
-          ),
-        ),
-        Positioned(
-          top: 430, 
-          left: 60,
-          right: 60,
-          child: Container(
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: const Color(0xFF63402C),
-              borderRadius: BorderRadius.circular(12),
-            ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
             child: Column(
-              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start, 
               children: [
-                Text(
-                  'Welcome to',
-                  style: GoogleFonts.poppins(
-                    color: const Color(0xFFF3E9DC),
-                    fontSize: 15,
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10.0),
+                  child: Text(
+                    'Welcome to',
+                    style: GoogleFonts.poppins(
+                      color: Colors.white,
+                      fontSize: 15, 
+                    ),
                   ),
                 ),
-                const SizedBox(height: 10),
                 SizedBox(
-                  height: 40,
+                  height: 70, 
                   // ignore: deprecated_member_use
                   child: TypewriterAnimatedTextKit(
-                  text: const ['Sarang Wallet'],
-                  textStyle: GoogleFonts.dancingScript(
-                    color: const Color(0xFFF3E9DC),
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
+                    text: const ['Sarang Wallet'],
+                    textStyle: GoogleFonts.dancingScript(
+                      color: Colors.white,
+                      fontSize: 37,
+                      fontWeight: FontWeight.bold,
                     ),
                     speed: const Duration(milliseconds: 250),
                     totalRepeatCount: 1,
                   ),
                 ),
               ],
+            ),
+          ),
+        ),
+        Positioned(
+          top: MediaQuery.of(context).size.height * 0.30, 
+          left: 20,
+          right: 20,
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(20.0), 
+              child: Stack(
+                alignment: Alignment.center,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.transparent, 
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color(0xFF301F17).withOpacity(0.7),
+                          offset: const Offset(0, 20),
+                          blurRadius: 40,
+                        ),
+                      ],
+                    ),
+                    height: 280,
+                    width: 280,
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Image.asset(
+                      'assets/sarang_wallet_icon.png',
+                      height: 230,
+                      width: 230,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
