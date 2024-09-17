@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'home_screen.dart'; // Import HomeScreen
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -9,8 +10,16 @@ class SignUpScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Get started'),
       ),
-      body: const Center(
-        child: Text('Ini adalah halaman sign up'),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => const HomeScreen()),
+            );
+          },
+          child: const Text('Sign Up'),
+        ),
       ),
     );
   }
