@@ -5,6 +5,8 @@ void main() {
 }
 
 class TransaksiApp extends StatelessWidget {
+  const TransaksiApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,11 +40,13 @@ class RiwayatTransaksi extends StatelessWidget {
     },
   ];
 
+  const RiwayatTransaksi({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Riwayat Transaksi'),
+        title: const Text('Riwayat Transaksi'),
         backgroundColor: Colors.blueAccent,
       ),
       body: ListView.builder(
