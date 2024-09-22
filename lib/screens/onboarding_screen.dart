@@ -275,7 +275,7 @@ class SecondOnboardingPage extends StatelessWidget {
                       MaterialPageRoute(builder: (context) => const SignUpScreen()),
                     );
                   },
-                  child: const Text('Sign up'),
+                  child: const Text('Sign Up'),
                 ),
               ),
               Padding(
