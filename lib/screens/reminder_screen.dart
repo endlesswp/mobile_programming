@@ -6,6 +6,18 @@ class ReminderScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xFF301F17),
+        title: const Center(
+          child: Text(
+            'Reminder',
+            style: TextStyle(
+              color: Color(0xFFF3E9DC),
+              fontFamily: 'Poppins',
+            ),
+          ),
+        ),
+      ),
       body: Stack(
         children: [
           Positioned.fill(
@@ -23,20 +35,7 @@ class ReminderScreen extends StatelessWidget {
               ),
             ),
           ),
-          const Center(
-            child: Text(
-              'Reminders Screen',
-              style: TextStyle(
-                color: Colors.white, 
-                fontSize: 24, 
-              ),
-            ),
-          ),
         ],
-      ),
-      appBar: AppBar(
-        backgroundColor: const Color(0xFFF3E9DC), 
-        title: const Text('Reminders'),
       ),
     );
   }
