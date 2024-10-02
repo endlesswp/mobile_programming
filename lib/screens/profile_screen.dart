@@ -30,6 +30,37 @@ class ProfileScreen extends StatelessWidget {
           Column(
             children: [
               const SizedBox(height: 40),
+              Center(
+                child: Container(
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.3),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: const Icon(
+                    Icons.person,
+                    size: 60,
+                    color: Color(0xFF301F17),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 10),
+              const Text(
+                'User',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
               Expanded(
                 child: Container(
                   decoration: const BoxDecoration(
@@ -79,9 +110,7 @@ class ProfileScreen extends StatelessWidget {
                                   TextButton(
                                     child: const Text('Logout'),
                                     onPressed: () {
-                                      // tutup dialog
                                       Navigator.of(context).pop();
-                                      // Navigate to the OnboardingScreen
                                       Navigator.of(context).pushAndRemoveUntil(
                                         MaterialPageRoute(builder: (context) => const OnboardingScreen()),
                                         (Route<dynamic> route) => false,
