@@ -123,7 +123,7 @@ class FirstOnboardingPage extends StatelessWidget {
                           curve: Curves.easeIn,
                         );
                       },
-                      child: const Text('Account'),
+                      child: const Text('Explore More'),
                     ),
                   ),
                 ),
