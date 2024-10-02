@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'change_pin_screen.dart';
 import 'help_support_screen.dart';
-import 'onboarding_screen.dart'; // Add this import
+import 'onboarding_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -30,7 +30,6 @@ class ProfileScreen extends StatelessWidget {
           Column(
             children: [
               const SizedBox(height: 40),
-              // ... (rest of the UI remains the same)
               Expanded(
                 child: Container(
                   decoration: const BoxDecoration(
@@ -64,7 +63,6 @@ class ProfileScreen extends StatelessWidget {
                         icon: Icons.logout,
                         title: 'Logout',
                         onTap: () {
-                          // Show a confirmation dialog
                           showDialog(
                             context: context,
                             builder: (BuildContext context) {
@@ -75,13 +73,13 @@ class ProfileScreen extends StatelessWidget {
                                   TextButton(
                                     child: const Text('Cancel'),
                                     onPressed: () {
-                                      Navigator.of(context).pop(); // Close the dialog
+                                      Navigator.of(context).pop();
                                     },
                                   ),
                                   TextButton(
                                     child: const Text('Logout'),
                                     onPressed: () {
-                                      // Close the dialog
+                                      // tutup dialog
                                       Navigator.of(context).pop();
                                       // Navigate to the OnboardingScreen
                                       Navigator.of(context).pushAndRemoveUntil(
@@ -107,8 +105,6 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 }
-
-// The FeatureCard class remains the same
 
 class FeatureCard extends StatelessWidget {
   final IconData icon;
