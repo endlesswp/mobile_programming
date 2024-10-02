@@ -1,23 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class ReminderScreen extends StatelessWidget {
+class ReminderScreen extends StatefulWidget {
   const ReminderScreen({super.key});
+
+  @override
+  _ReminderScreenState createState() => _ReminderScreenState();
+}
+
+class _ReminderScreenState extends State<ReminderScreen> {
+  final TextEditingController titleController = TextEditingController();
+  final TextEditingController amountController = TextEditingController();
+  final TextEditingController dateController = TextEditingController();
+  final List<Map<String, String>> reminders = [];
+
+  void _saveReminder() {
+    if (titleController.text.isNotEmpty &&
+        amountController.text.isNotEmpty &&
+        dateController.text.isNotEmpty) {
+      setState(() {
+        reminders.add({
+          'title': titleController.text,
+          'amount': amountController.text,
+          'date': dateController.text,
+        });
+        titleController.clear();
+        amountController.clear();
+        dateController.clear();
+      });
+    }
+  }
+
+  void _deleteInputs() {
+    titleController.clear();
+    amountController.clear();
+    dateController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color(0xFF301F17),
-        title: const Center(
-          child: Text(
-            'Reminder',
-            style: TextStyle(
-              color: Color(0xFFF3E9DC),
-              fontFamily: 'Poppins',
-            ),
-          ),
-        ),
-      ),
       body: Stack(
         children: [
           Positioned.fill(
@@ -33,6 +55,117 @@ class ReminderScreen extends StatelessWidget {
                   end: Alignment.bottomLeft,
                 ),
               ),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'Reminder',
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.dancingScript(
+                    fontSize: 70,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 10),
+                const Text(
+                  'For Sarang Wallet Friends',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'Poppins',
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Column(
+                        children: [
+                          const Text(
+                            'Set Your Reminder',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          TextField(
+                            controller: titleController,
+                            decoration: const InputDecoration(
+                              labelText: 'Title',
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          TextField(
+                            controller: amountController,
+                            decoration: const InputDecoration(
+                              labelText: 'Amount',
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          TextField(
+                            controller: dateController,
+                            decoration: const InputDecoration(
+                              labelText: 'Date',
+                              border: OutlineInputBorder(),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconButton(
+                                icon: const Icon(Icons.close, color: Colors.red),
+                                onPressed: _deleteInputs,
+                              ),
+                              IconButton(
+                                icon: const Icon(Icons.check, color: Colors.green),
+                                onPressed: _saveReminder,
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          const Text(
+                            'Reminders List:',
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          const SizedBox(height: 10),
+                          ...reminders.map((reminder) {
+                            return Container(
+                              margin: const EdgeInsets.symmetric(vertical: 5),
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: const Color(0xFF8D6E63),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text('Title: ${reminder['title']}'),
+                                  Text('Amount: ${reminder['amount']}'),
+                                  Text('Date: ${reminder['date']}'),
+                                ],
+                              ),
+                            );
+                          }).toList(),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
         ],
