@@ -1,6 +1,7 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:animated_text_kit/animated_text_kit.dart'; 
+
 import 'signin_screen.dart';
 import 'signup_screen.dart';
 
@@ -122,7 +123,7 @@ class FirstOnboardingPage extends StatelessWidget {
                           curve: Curves.easeIn,
                         );
                       },
-                      child: const Text('Explore More'),
+                      child: const Text('Account'),
                     ),
                   ),
                 ),
