@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "799480225992",
+    "project_id": "mobileprogram-3b259",
+    "storage_bucket": "mobileprogram-3b259.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:799480225992:android:ea797f8e0c81ea073d45fd",
+        "android_client_info": {
+          "package_name": "com.example.digital_wallet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAamFPGgeWW2oo3ExKfUAhQrELWki0oi4A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

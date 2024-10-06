@@ -1,8 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/home_screen.dart';
 import 'screens/onboarding_screen.dart';
-import 'screens/home_screen.dart'; 
+
 void main() {
-  runApp(const MyApp());
+  runApp(const MyApp()); 
+  WidgetsFlutterBinding.ensureInitialized();
+  Firebase.initializeApp(options: FirebaseOptions(apiKey: "AIzaSyAL328ylR9GkiQkbUMrkCcKp8Nke7ESnbM",
+  authDomain: "mobileprogram-3b259.firebaseapp.com",
+  projectId: "mobileprogram-3b259",
+  storageBucket: "mobileprogram-3b259.appspot.com",
+  messagingSenderId: "799480225992",
+  appId: "1:799480225992:web:956a6e0dd98372753d45fd",
+  measurementId: "G-SWFJ6KZ39Y"));
 }
 
 class MyApp extends StatelessWidget {
