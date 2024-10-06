@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class QrisScreen extends StatelessWidget {
-  const QrisScreen({super.key});
+class QrisScreen extends StatefulWidget {
+  const QrisScreen({Key? key}) : super(key: key);
+
+  @override
+  State<QrisScreen> createState() => _QrisScreenState();
+}
+
+class _QrisScreenState extends State<QrisScreen> {
+  final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
+  QRViewController? controller;
+  String result = '';
+
+  @override
+  void dispose() {
+    controller?.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,8 +57,8 @@ class QrisScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 400, 
-                  height: 400, 
+                  width: 400,
+                  height: 400,
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     color: Colors.white,
@@ -66,21 +82,16 @@ class QrisScreen extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      Container(
-                        width: 250,
-                        height: 250,
-                        color: Colors.grey[300],
-                        child: const Center(
-                          child: Text(
-                            'QR Code Here',
-                            style: TextStyle(color: Colors.grey),
-                          ),
+                      Expanded(
+                        child: QRView(
+                          key: qrKey,
+                          onQRViewCreated: _onQRViewCreated,
                         ),
                       ),
                       const SizedBox(height: 20),
-                      const Text(
-                        'Amount: Rp 100,000',
-                        style: TextStyle(
+                      Text(
+                        'Amount: $result',
+                        style: const TextStyle(
                           fontSize: 18,
                           color: Color(0xFF301F17),
                         ),
@@ -110,5 +121,14 @@ class QrisScreen extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  void _onQRViewCreated(QRViewController controller) {
+    this.controller = controller;
+    controller.scannedDataStream.listen((scanData) {
+      setState(() {
+        result = scanData.code ?? '';
+      });
+    });
   }
 }

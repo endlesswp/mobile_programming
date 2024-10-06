@@ -61,9 +61,9 @@ class HelpSupportScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(color: const Color(0xFF8D6E63)),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Icon(Icons.email, color: Colors.white),
                       SizedBox(width: 8),
                       Text(

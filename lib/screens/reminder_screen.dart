@@ -102,7 +102,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Color(0xFFF3E9DC),
+                  color: const Color(0xFFF3E9DC),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
