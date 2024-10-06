@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'change_pin_screen.dart';
+import 'change_password_screen.dart';
 import 'help_support_screen.dart';
 import 'onboarding_screen.dart';
 
@@ -72,11 +72,11 @@ class ProfileScreen extends StatelessWidget {
                     children: [
                       FeatureCard(
                         icon: Icons.lock,
-                        title: 'Change PIN',
+                        title: 'Change Password',
                         onTap: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => const ChangePinScreen()),
+                            MaterialPageRoute(builder: (context) => const ChangePasswordScreen()),
                           );
                         },
                       ),

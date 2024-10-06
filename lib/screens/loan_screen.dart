@@ -11,7 +11,7 @@ class _LoanScreenState extends State<LoanScreen> {
   String? selectedLoanType;
   String amount = '';
   String selectedPaymentMethod = 'Bank Transfer';
-  int loanTerm = 12;
+  int loanTerm = 6;
   double interestRate = 0.05;
 
   final List<String> loanTypes = ['Personal Loan', 'Home Loan', 'Car Loan'];

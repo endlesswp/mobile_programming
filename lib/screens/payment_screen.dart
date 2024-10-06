@@ -50,61 +50,69 @@ class _PaymentScreenState extends State<PaymentScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
-              'Select Utility Service',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-            ),
-            const SizedBox(height: 10),
-            _buildUtilitySelection(),
-            const SizedBox(height: 20),
-            const Text(
-              'Enter Amount',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-            ),
-            const SizedBox(height: 10),
-            TextField(
-              decoration: const InputDecoration(
-                filled: true,
-                fillColor: Colors.white,
-                border: OutlineInputBorder(),
-                labelText: 'Amount (Rp)',
-                prefixIcon: Icon(Icons.money),
-              ),
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                setState(() {
-                  amount = value;
-                });
-              },
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              'Select Payment Method',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-            ),
-            const SizedBox(height: 10),
-            _buildPaymentMethodSelection(),
-            const SizedBox(height: 20),
-            Center(
-              child: SizedBox(
-                width: 140,
-                child: ElevatedButton(
-                  onPressed: _onPayNow,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF301F17),
-                    foregroundColor: Colors.white,
-                    elevation: 4,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text(
+                      'Select Utility Service',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
                     ),
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                  ),
-                  child: const Text('Pay Now'),
+                    const SizedBox(height: 10),
+                    _buildUtilitySelection(),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Enter Amount',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    const SizedBox(height: 10),
+                    TextField(
+                      decoration: const InputDecoration(
+                        filled: true,
+                        fillColor: Colors.white,
+                        border: OutlineInputBorder(),
+                        labelText: 'Amount (Rp)',
+                        prefixIcon: Icon(Icons.money),
+                      ),
+                      keyboardType: TextInputType.number,
+                      onChanged: (value) {
+                        setState(() {
+                          amount = value;
+                        });
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    const Text(
+                      'Select Payment Method',
+                      style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    const SizedBox(height: 10),
+                    _buildPaymentMethodSelection(),
+                    const SizedBox(height: 20),
+                    _buildSummary(),
+                  ],
                 ),
               ),
             ),
-            const Spacer(),
-            _buildSummary(),
+            const SizedBox(height: 20),
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: _onPayNow,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF301F17),
+                  foregroundColor: Colors.white,
+                  elevation: 4,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                ),
+                child: const Text('Pay Now'),
+              ),
+            ),
+            const SizedBox(height: 16),
           ],
         ),
       ),

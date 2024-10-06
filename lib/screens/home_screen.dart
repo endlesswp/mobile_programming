@@ -168,7 +168,7 @@ class _HomeContentState extends State<HomeContent> {
                       'Your account balance',
                       style: TextStyle(
                         fontFamily: 'Poppins',
-                        color: Colors.brown,
+                        color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),
@@ -176,13 +176,13 @@ class _HomeContentState extends State<HomeContent> {
                   ),
                   Positioned(
                     top: 115,
-                    left: 105,
+                    left: 103,
                     child: Row(
                       children: [
                         IconButton(
                           icon: Icon(
                             _isBalanceVisible ? Icons.visibility : Icons.visibility_off,
-                            color: Colors.brown,
+                            color: Colors.black,
                           ),
                           onPressed: () {
                             setState(() {
@@ -194,7 +194,7 @@ class _HomeContentState extends State<HomeContent> {
                           _isBalanceVisible ? 'Rp. 123.456.789' : 'Rp. **********',
                           style: const TextStyle(
                             fontFamily: 'Poppins',
-                            color: Colors.white,
+                            color: Colors.black,
                             fontSize: 24,
                             fontWeight: FontWeight.bold,
                           ),
@@ -222,44 +222,174 @@ class _HomeContentState extends State<HomeContent> {
                 height: 200,
                 child: ListView(
                   children: [
-                    Container(
-                      height: 100,
-                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFD7CCC8),
-                        borderRadius: BorderRadius.circular(10),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Promo & Discount 1'),
+                              content: const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac eros nec justo malesuada vehicula. Morbi ut ante id risus vulputate tincidunt.'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: AspectRatio(
+                        aspectRatio: 1700 / 900,
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/promo1.png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                    Container(
-                      height: 100,
-                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFD7CCC8),
-                        borderRadius: BorderRadius.circular(10),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Promo & Discount 2'),
+                              content: const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac eros nec justo malesuada vehicula. Morbi ut ante id risus vulputate tincidunt.'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: AspectRatio(
+                        aspectRatio: 1700 / 900,
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/promo2.png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                    Container(
-                      height: 100,
-                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFD7CCC8),
-                        borderRadius: BorderRadius.circular(10),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Promo & Discount 3'),
+                              content: const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac eros nec justo malesuada vehicula. Morbi ut ante id risus vulputate tincidunt.'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: AspectRatio(
+                        aspectRatio: 1700 / 900,
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/promo3.png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                    Container(
-                      height: 100,
-                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFD7CCC8),
-                        borderRadius: BorderRadius.circular(10),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Promo & Discount 4'),
+                              content: const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac eros nec justo malesuada vehicula. Morbi ut ante id risus vulputate tincidunt.'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: AspectRatio(
+                        aspectRatio: 1700 / 900,
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/promo4.png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
-                    Container(
-                      height: 100,
-                      margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                      decoration: BoxDecoration(
-                        color: const Color(0xFFD7CCC8),
-                        borderRadius: BorderRadius.circular(10),
+                    GestureDetector(
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                              title: const Text('Promo & Discount 5'),
+                              content: const Text('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ac eros nec justo malesuada vehicula. Morbi ut ante id risus vulputate tincidunt.'),
+                              actions: [
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: const Text('OK'),
+                                ),
+                              ],
+                            );
+                          },
+                        );
+                      },
+                      child: AspectRatio(
+                        aspectRatio: 1700 / 900,
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/promo5.png'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],

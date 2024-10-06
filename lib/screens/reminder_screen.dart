@@ -102,7 +102,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
               Container(
                 padding: const EdgeInsets.all(20),
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Color(0xFFF3E9DC),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -166,7 +166,7 @@ class _ReminderScreenState extends State<ReminderScreen> {
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
               ),
               const SizedBox(height: 5),
-              Container(
+              SizedBox(
                 height: MediaQuery.of(context).size.height * 0.4,
                 child: reminders.isNotEmpty 
                   ? ListView.builder(
