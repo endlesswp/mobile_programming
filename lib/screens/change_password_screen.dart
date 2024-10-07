@@ -1,26 +1,55 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class ChangePasswordScreen extends StatelessWidget {
+class ChangePasswordScreen extends StatefulWidget {
   const ChangePasswordScreen({super.key});
+
+  @override
+  _ChangePasswordScreenState createState() => _ChangePasswordScreenState();
+}
+
+class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final _auth = FirebaseAuth.instance;
+  String _currentPassword = '';
+  String _newPassword = '';
+  String _error = '';
+
+  void _handleChangePassword() async {
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      setState(() {
+        _error = '';
+      });
+
+      try {
+        final user = _auth.currentUser;
+        if (user != null) {
+          final cred = EmailAuthProvider.credential(
+            email: user.email!,
+            password: _currentPassword,
+          );
+          await user.reauthenticateWithCredential(cred);
+          await user.updatePassword(_newPassword);
+          Navigator.pop(context);
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Password updated successfully')),
+          );
+        }
+      } on FirebaseAuthException catch (e) {
+        setState(() {
+          _error = e.message ?? 'An error occurred while changing the password';
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text('Change Password'),
         backgroundColor: const Color(0xFF301F17),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Color(0xFFF3E9DC)),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        title: const Text(
-          'Change Password',
-          style: TextStyle(
-            color: Color(0xFFF3E9DC),
-            fontFamily: 'Poppins',
-          ),
-        ),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -34,53 +63,80 @@ class ChangePasswordScreen extends StatelessWidget {
             end: Alignment.bottomLeft,
           ),
         ),
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 20),
-            const Text(
-              'Enter Your New Password',
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-            ),
-            const SizedBox(height: 20),
-            _buildPasswordField('New Password'),
-            const SizedBox(height: 20),
-            _buildPasswordField('Confirm Password'),
-            const SizedBox(height: 30),
-            ElevatedButton(
-              onPressed: () {},
-              style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF5D4037),
-                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
+        child: SafeArea(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'Current Password',
+                          border: OutlineInputBorder(),
+                          filled: true,
+                          fillColor: Colors.white,
+                          labelStyle: TextStyle(color: Colors.grey),
+                        ),
+                        obscureText: true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your current password';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) => _currentPassword = value!,
+                      ),
+                      const SizedBox(height: 16),
+                      TextFormField(
+                        decoration: const InputDecoration(
+                          labelText: 'New Password',
+                          border: OutlineInputBorder(),
+                          filled: true,
+                          fillColor: Colors.white,
+                          labelStyle: TextStyle(color: Colors.grey),
+                        ),
+                        obscureText: true,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter your new password';
+                          }
+                          return null;
+                        },
+                        onSaved: (value) => _newPassword = value!,
+                      ),
+                      const SizedBox(height: 16),
+                      if (_error.isNotEmpty)
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 16.0),
+                          child: Text(
+                            _error,
+                            style: const TextStyle(color: Colors.red),
+                          ),
+                        ),
+                      ElevatedButton(
+                        onPressed: _handleChangePassword,
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: const Color(0xFF301F17),
+                          foregroundColor: Colors.white,
+                          elevation: 4,
+                          minimumSize: const Size(double.infinity, 50),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                        ),
+                        child: const Text('Change Password', style: TextStyle(fontSize: 18)),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              child: const Text(
-                'Change Password',
-                style: TextStyle(color: Colors.white, fontSize: 16),
-              ),
             ),
-          ],
+          ),
         ),
-      ),
-    );
-  }
-
-  Widget _buildPasswordField(String label) {
-    return TextField(
-      obscureText: true,
-      decoration: InputDecoration(
-        labelText: label,
-        labelStyle: const TextStyle(color: Colors.white),
-        filled: true,
-        fillColor: const Color(0xFF8D6E63),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: BorderSide.none,
-        ),
-        contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
       ),
     );
   }
